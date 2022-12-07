@@ -1,8 +1,8 @@
-# Crunch
+# Upgoods
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-a website that share some information about some movies
+a eCommerce website is licensed under MIT license
 
 ## ⚙️ Tech Stack
 
