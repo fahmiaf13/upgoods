@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+
+  color-scheme: light dark;
+  color: #393e46;
+  background-color: #f3f3f3;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
