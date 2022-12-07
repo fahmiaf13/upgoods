@@ -50,7 +50,7 @@ reference : https://atomicdesign.bradfrost.com/chapter-2/
 
 ## 📥 Installation
 
-### Install crunch-web with yarn
+### Install upgoods with yarn
 
 Clone the project
 
