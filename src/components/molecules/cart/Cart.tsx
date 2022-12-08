@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+// icons
 import { BiShoppingBag } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { MdSportsKabaddi } from "react-icons/md";
-import Counter from "../../atoms/Counter";
 import { FaCartPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../../../redux/slices/cartSlices";
 import { IoCloseCircleSharp } from "react-icons/io5";
+// components
+import Counter from "../../atoms/Counter";
 
 const Cart = () => {
   const [count, setCount] = useState(1);
-  const { cart } = useSelector((state: any) => state.cart);
+  const { cart } = useSelector<any, any>((state) => state.cart);
   const dispatch = useDispatch();
 
   const getTotal = () => {
@@ -53,7 +55,7 @@ const Cart = () => {
           <span className="badge badge-sm bg-tomato indicator-item border-2 border-whiter py-2">{cart?.length}</span>
         </div>
       </label>
-      <div tabIndex={0} className="p-5 card card-compact dropdown-content w-96 bg-base-100 shadow">
+      <div tabIndex={0} className="p-5 card card-compact visible dropdown-content w-96 bg-base-100 shadow">
         <div className="flex flex-col gap-3 max-h-[400px] overflow-scroll">
           {cart.length ? (
             showItems
@@ -68,10 +70,7 @@ const Cart = () => {
           <div className="text-md">
             Total: <span className="font-extrabold">${getTotal().totalPrice}</span>{" "}
           </div>
-          <button className="btn bg-sun btn-block border-none font-extrabold">
-            {" "}
-            <FaCartPlus /> CHECK OUT
-          </button>
+          <button className="btn bg-sun btn-block border-none font-extrabold">CHECK OUT</button>
         </div>
       </div>
     </div>

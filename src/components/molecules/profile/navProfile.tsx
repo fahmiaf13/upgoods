@@ -7,6 +7,7 @@ import AvatarDefault from "../../../assets/avatar-default.png";
 import { TbSettings } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Cart } from "../cart";
+import { MdDashboard } from "react-icons/md";
 
 const NavProfile = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,9 @@ const NavProfile = () => {
         </label>
         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
           <li>
-            <a className="justify-between">{user.displayName}</a>
+            <Link to="/dashboard" className="justify-start">
+              <MdDashboard size={20} /> Dashboard
+            </Link>
           </li>
 
           <li>

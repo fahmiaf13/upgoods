@@ -6,6 +6,7 @@ const Home = lazy(() => import("../components/pages/Home"));
 const Login = lazy(() => import("../components/pages/Login"));
 const Register = lazy(() => import("../components/pages/Register"));
 const Dashboard = lazy(() => import("../components/pages/Dashboard"));
+const Settings = lazy(() => import("../components/pages/Settings"));
 const ProductDetails = lazy(() => import("../components/pages/product/ProductDetails"));
 
 export default function Router() {
@@ -19,6 +20,7 @@ export default function Router() {
       </Route>
       <Route element={<ProtectedGuards />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/settings" element={<Settings />} />
       </Route>
     </Routes>
   );

@@ -14,7 +14,14 @@ export const googleAuth: any = createAsyncThunk("auth/google", async (userAuth, 
   }
 });
 
-const initialState = {
+export interface GoogleAuthState {
+  data: string[];
+  error: string[] | null;
+  loading: Boolean;
+  success: Boolean;
+}
+
+const initialState: GoogleAuthState = {
   data: [],
   error: null,
   loading: false,
