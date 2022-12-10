@@ -1,4 +1,3 @@
-import Loading from "../atoms/Loading";
 import { LandingPage, Feature, AboutUs, Product, ContactUs } from "../organisms/home";
 import Template from "../templates/Template";
 

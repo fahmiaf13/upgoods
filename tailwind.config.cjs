@@ -11,6 +11,7 @@ module.exports = {
           200: "#5C636E",
         },
         whiter: "#F3F3F3",
+        cloud: "#EAE9E9",
         sun: "#F8B500",
         tomato: "#FB3640",
       },

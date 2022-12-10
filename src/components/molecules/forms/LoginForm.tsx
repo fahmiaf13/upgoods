@@ -1,4 +1,5 @@
-import React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import TextInput from "../../atoms/TextInput";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
@@ -13,6 +14,11 @@ type FormValues = {
   type: string;
 };
 
+const schema = yup.object().shape({
+  email: yup.string().email().required("Email is a required field"),
+  password: yup.string().required("Password is a required field").min(6, "Password must be at least 6 characters"),
+});
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { handleSubmit, control } = useForm<FormValues>({
@@ -20,10 +26,10 @@ const LoginForm = () => {
       email: "",
       password: "",
     },
-    mode: "onChange",
+    resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmitLogin = (data: FormValues) => {
     console.log(data);
   };
 
@@ -33,7 +39,7 @@ const LoginForm = () => {
   return (
     <div className="w-full md:w-1/2 xl:w-1/3">
       <div className="w-full flex flex-col bg-slate-50 rounded-lg px-8 py-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
+        <form onSubmit={handleSubmit(onSubmitLogin)} className="flex flex-col gap-2">
           <div className="font-extrabold text-3xl text-center text-sun">LOGIN</div>
           <TextInput control={control} name="email" type="email" />
           <TextInput control={control} name="password" type="password" />

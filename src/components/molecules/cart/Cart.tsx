@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { BiShoppingBag } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { MdSportsKabaddi } from "react-icons/md";
-import { FaCartPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../../../redux/slices/cartSlices";
 import { IoCloseCircleSharp } from "react-icons/io5";

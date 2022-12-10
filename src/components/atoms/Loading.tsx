@@ -14,9 +14,3 @@ const Loading = () => {
 };
 
 export default Loading;
-
-{
-  /* <div className="flex fixed justify-center w-screen items-center h-screen z-[200]">
-        <ReactLoading type="bars" color="#F8B500" height={400} width={200} />
-      </div> */
-}
