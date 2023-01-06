@@ -2,6 +2,9 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import TextInput from "../../atoms/TextInput";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
+import { emailPassAuthRegister } from "../../../redux/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 type FormValues = {
   email: string;
@@ -17,6 +20,7 @@ const schema = yup.object().shape({
 });
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
   const { control, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -27,7 +31,7 @@ const RegisterForm = () => {
   });
 
   const onSubmitRegister = (data: FormValues) => {
-    console.log(data);
+    dispatch(emailPassAuthRegister(data));
   };
 
   return (
@@ -41,6 +45,12 @@ const RegisterForm = () => {
           <button type="submit" className="btn bg-sun w-full font-extrabold hover:border-none border-none">
             SUBMIT
           </button>
+          <div className="text-sm mt-5 text-center">
+            Already have an account ?{" "}
+            <Link to="/login" className="text-sun">
+              Login
+            </Link>
+          </div>
         </form>
       </div>
     </div>

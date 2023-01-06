@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FieldValues, useController } from "react-hook-form";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import { pascal } from "case";
 
 interface Props {
   name: string;

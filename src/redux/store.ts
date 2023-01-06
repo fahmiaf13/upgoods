@@ -1,28 +1,30 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
-import { getPersistConfig } from "redux-deep-persist";
 import { persistReducer, persistStore } from "redux-persist";
+import { getPersistConfig } from "redux-deep-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 
 // reducer
-import googleAuthReducer from "./slices/authSlice";
+import authReducer from "./slices/authSlice";
 import { cartReducer } from "./slices/cartSlices";
+
 // middleware
 import logger from "redux-logger";
 
-const authReducer = combineReducers({
-  user: googleAuthReducer,
+const rootReducer = combineReducers({
+  user: authReducer,
   cart: cartReducer,
 });
 
-const persistConfig = {
-  key: "google-auth",
+const persistConfig = getPersistConfig({
+  key: "root",
   storage,
   whitelist: ["user"],
-};
+  rootReducer: rootReducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   devTools: true,

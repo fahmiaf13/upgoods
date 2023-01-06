@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { googleAuth } from "../../../redux/slices/authSlice";
+import { emailPassAuthLogin } from "../../../redux/slices/authSlice";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 type FormValues = {
   email: string;
@@ -21,6 +24,8 @@ const schema = yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const datas = useSelector((state: any) => state.user);
+  const [error, setError] = useState("");
   const { handleSubmit, control } = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -30,12 +35,17 @@ const LoginForm = () => {
   });
 
   const onSubmitLogin = (data: FormValues) => {
-    console.log(data);
+    dispatch(emailPassAuthLogin(data));
   };
 
   const handleLoginGoogle = () => {
     dispatch(googleAuth());
   };
+
+  useEffect(() => {
+    setError(datas?.emailAndPassword?.error?.code);
+  }, [datas?.emailAndPassword?.error?.code]);
+
   return (
     <div className="w-full md:w-1/2 xl:w-1/3">
       <div className="w-full flex flex-col bg-slate-50 rounded-lg px-8 py-10">
@@ -51,6 +61,7 @@ const LoginForm = () => {
             SUBMIT
           </button>
         </form>
+        <div>{error}</div>
         <div className="text-center text-sm divider font-regular">Or Login With</div>
         <div className="flex md:flex-row flex-col w-full gap-3">
           <div className="w-full">

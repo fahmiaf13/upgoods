@@ -6,7 +6,9 @@ import { NavProfile } from "../molecules/profile";
 
 const Navbar = () => {
   const [navBg, setNavBg] = useState("transparent");
-  const data = useSelector((state: any) => state.user);
+  const data = useSelector((state: any) => state);
+  console.log(data, "from nav");
+
   const isLogin = data.success;
 
   const navList = [
